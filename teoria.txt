@@ -1,0 +1,9 @@
+//SI QUEREIS AÑADIR UNA IMAGEN FUERA DE UNA CLASE USAR ESTE CÓDIGO 
+// let fondoFoto=new Image()
+// fondoFoto.src='./img/Middle.png'
+// fondoFoto.onload=function(){
+//     ctx.drawImage(fondoFoto,0,0,400,400)
+// }
+
+
+
