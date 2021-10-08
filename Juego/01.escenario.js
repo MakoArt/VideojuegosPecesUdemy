@@ -3,13 +3,8 @@ import{cuadro, vidas,puntuacion} from './06.marcador.js'
 
 
 
-
-
-
-
 const canvas=document.querySelector('#canvas')
 export const ctx=canvas.getContext('2d');
-
 
 
 canvas.width=800 
@@ -33,7 +28,26 @@ fondo2.src='./img/FondoMarino2.png'
 let back=new Image()
 back.src='./img/FondoMarino.png'
 
-export let nivel1=[
+export let nivel;
+
+function niveles(){
+ 
+    
+if(vidas.vidas>1 && puntuacion.puntos<2){
+    ctx.drawImage(fondo1,0,-96,800,608)
+    ctx.drawImage(back,0,0,800,608)
+ 
+    cangrejo.dibuja()
+    cangrejo.mueveCangrejo()
+    estrella.dibuja()
+    estrella2.dibuja()
+    vidas.colisionAtunes()
+    puntuacion.colisionEstrellas()
+    tiburon.dibuja()
+ 
+
+
+  nivel=[
     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2], 
     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2], 
@@ -55,7 +69,20 @@ export let nivel1=[
     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
 ]
 
-export let nivel2=[
+ } else if(vidas.vidas>0 && puntuacion.puntos>=2){
+  
+    ctx.drawImage(atardecer,0,-136,800,608)
+    ctx.drawImage(fondo2,0,0,800,608)
+
+    cangrejo.dibuja()
+    cangrejo.mueveCangrejo()
+    estrella.dibuja()
+    estrella2.dibuja()
+    vidas.colisionAtunes()
+    puntuacion.colisionEstrellas()
+    tiburon.dibuja()
+ 
+ nivel=[
     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2], 
     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2], 
@@ -76,66 +103,43 @@ export let nivel2=[
     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
     [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 ]
+ 
+}else{
+    ctx.drawImage(gameOver,0,-96,800,608)
+    setTimeout(()=>{window.location.reload()},5000)
+ 
+}
+ 
+ 
+ return nivel
 
-
+}//cierra funcion niveles
 
 
 //bucle principal del juego 
 
 function principal(){
     requestAnimationFrame(principal)
-
-     
 canvas.width=800 
 canvas.height=608 
-    
-//NIVEL 1  **********************************
+niveles()
 
-if(vidas.vidas>1 && puntuacion.puntos<2){
+cuadro.pintaCuadro()
+vidas.restaVidas()
+puntuacion.sumaPuntos()
 
-ctx.drawImage(fondo1,0,-96,800,608)
+
+
    
 for(let i=0;i<atunes.length;i++){
  atunes[i].dibuja()
  atunes[i].moverAtunes()
  }
 
- ctx.drawImage(back,0,0,800,608)
- 
-    cangrejo.dibuja()
-    cangrejo.mueveCangrejo()
-    estrella.dibuja()
-    estrella2.dibuja()
-    cuadro.pintaCuadro()
-    vidas.restaVidas()
-    vidas.colisionAtunes()
-    puntuacion.colisionEstrellas()
-    puntuacion.sumaPuntos()
-    tiburon.dibuja()
- 
-}else if(vidas.vidas>0 && puntuacion.puntos>=2){
+
+
+
    
-
-    ctx.drawImage(atardecer,0,-136,800,608)
-    ctx.drawImage(fondo2,0,0,800,608)
-    cuadro.pintaCuadro()
-    vidas.restaVidas()
-    puntuacion.sumaPuntos()
-
-
-}else{
-   ctx.drawImage(gameOver,0,-96,800,608)
-   setTimeout(()=>{window.location.reload()},5000)
-}
-
-
-
-
-//Cierro nivel 1 ********************************************
-
-
-
-
 
 
 

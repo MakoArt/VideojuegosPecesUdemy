@@ -1,5 +1,5 @@
 import {ctx} from './01.escenario.js'
-import {nivel1} from './01.escenario.js'
+import {nivel} from './01.escenario.js'
 
 
 
@@ -47,7 +47,7 @@ class AnimalMarino{
        this.coorX=parseInt(this.posX/31)
        this.coorY=parseInt(this.posY/32)
 
-       if(nivel1[this.coorY][this.coorX]==0){
+       if(nivel[this.coorY][this.coorX]==0){
            this.posX+=5
        }
 
@@ -61,7 +61,7 @@ class AnimalMarino{
         this.coorX=parseInt(this.posX/33)
         this.coorY=parseInt(this.posY/32)
  
-        if(nivel1[this.coorY][this.coorX]==0){
+        if(nivel[this.coorY][this.coorX]==0){
             this.posX-=5
         }
 
@@ -74,7 +74,7 @@ class AnimalMarino{
         this.coorX=parseInt(this.posX/33)
         this.coorY=parseInt(this.posY/33)
  
-        if(nivel1[this.coorY][this.coorX]==0){
+        if(nivel[this.coorY][this.coorX]==0){
             this.posY-=5
         }
 
@@ -90,7 +90,7 @@ class AnimalMarino{
         this.coorX=parseInt(this.posX/33)
         this.coorY=parseInt(this.posY/30)
  
-        if(nivel1[this.coorY][this.coorX]==0){
+        if(nivel[this.coorY][this.coorX]==0){
             this.posY+=5
         }
 
